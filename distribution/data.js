@@ -7,6 +7,12 @@ firebase.database().ref().child('Meses').on('value', function (data) {
     select.innerHTML += `<option>${element}</option>`;
   });
 })
+
+var violet = '#DF99CA',
+red    = '#F0404C',
+green  = '#7CF29C';
+
+
 const showData = (el) => {
   const card = document.createElement('card');
   card.setAttribute('class', 'card');
@@ -166,6 +172,7 @@ const selectMonth = (e) => {
     })
   })
 }
+
 select.addEventListener('change', selectMonth);
 firebase.database().ref().child('Paises').on('value', function (data) {
   const dataPaises = Object.keys(data.val());
@@ -180,9 +187,59 @@ const selectCountries = (e) => {
     content.innerHTML = '';
     incidents.forEach((element) => {
       Object.values(element).forEach((e) => {
+        
         if (value === e.Region) {
+          const chartStatus = parseInt(e.status)
+          console.log(typeof chartStatus);
+          
+          
+          const idChart = e.id  
+          content.innerHTML += `
+          <div class="card mb-4">
+            <div class="card-header">
+             <h2 class="h6 text-uppercase mb-0">Pie chart Example</h2>
+            </div>
+           <div class="card-body">
+             <div class="chart-holder">
+             <p>hola</p>
+              <canvas id="${idChart}"></canvas>
+             </div>
+            </div>
+          </div>
+          `  
           showData(e);
-        }
+          setTimeout(() => {
+            new Chart(idChart, {
+              type: 'doughnut',
+              options: {
+                  cutoutPercentage: 80,
+                  legend: {
+                      display: false
+                  }
+              },
+              data: {
+                labels: [
+                  "First",
+                  "Second"
+                ],
+                  datasets: [
+                      {
+                  data: [100, 100-chartStatus],
+                  borderWidth: [0, 0],
+                  backgroundColor: [
+                  violet,
+                  "#eee"
+                ],
+                  hoverBackgroundColor: [
+                    violet,
+                    "#eee"
+                ]
+                }]
+               }
+            });
+          }, 1000)
+
+        } 
       })
     })
   })
