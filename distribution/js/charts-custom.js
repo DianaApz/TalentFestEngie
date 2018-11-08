@@ -2,8 +2,8 @@ $(function () {
     var violet = '#DF99CA',
         red    = '#F0404C',
         green  = '#7CF29C';
-  // Pie Chart
-   // ------------------------------------------------------ //
+//   Pie Chart
+//    ------------------------------------------------------ //
    var PIECHART = document.querySelectorAll('.pieChart2');
    new Chart(PIECHART, {
        type: 'doughnut',
