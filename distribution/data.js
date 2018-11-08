@@ -25,10 +25,6 @@ const showData = (el) => {
 
   const boxBtn = document.createElement('div');
   const btnLook = document.createElement('button');
-  btnLook.setAttribute('type', 'button');
-  btnLook.setAttribute('class', 'btn btn-primary');
-  btnLook.setAttribute('data-toggle', 'modal');
-  btnLook.setAttribute('data-target', `#mLook${el.id}`);
   btnLook.textContent = 'VER';
   const btnPlan = document.createElement('button');
   btnPlan.setAttribute('type', 'button');
@@ -80,34 +76,6 @@ const showData = (el) => {
   pDate.textContent = `Fecha límite : ${el.deadline}`;
   const pStatus = document.createElement('p');
   pStatus.textContent = `Estado : ${el.status}`;
-
-
-  // MODAL CHART
-  const modalChart = document.createElement('div');
-  modalChart.setAttribute('class', 'card mb-4')
-  const modalCardChart = document.createElement('div');
-  modalCardChart.setAttribute('class', 'card-header')
-  const modalH2 = document.createElement('h2');
-  modalH2.setAttribute('class', 'h6 text-uppercase mb-0')
-  modalCanva.textContent = 'hola'
-
-  const modalCardBody = document.createElement('div');
-  modalCardBody.setAttribute('class', 'card-body')
-  const modalChartHolder = document.createElement('div');
-  modalChartHolder.setAttribute('class', 'chart-holder')
-  const modalCanva= document.createElement('canvas');
-  modalCanva.setAttribute('class', 'pieChart2')
-
-//   <div class="card mb-4">
-//   <div class="card-header">
-//     <h2 class="h6 text-uppercase mb-0">Pie chart Example</h2>
-//   </div>
-//   <div class="card-body">
-//     <div class="chart-holder">
-//       <canvas id="pieChart2"></canvas>
-//     </div>
-//   </div>
-// </div>
   const modalFooter = document.createElement('div');
   modalFooter.setAttribute('class', 'modal-footer');
   const btnDetails = document.createElement('button');
@@ -125,69 +93,14 @@ const showData = (el) => {
   modalBody.appendChild(pRes);
   modalBody.appendChild(pDate);
   modalBody.appendChild(pStatus);
-
-
-  modalChart.appendChild(modalCardChart)
-  modalChart.appendChild(modalCardBody)
-
-  modalCardChart.appendChild(modalH2)
-  modalChartHolder.appendChild(modalCanva)
-  modalCardBody.appendChild(modalChartHolder)
-
-
-
-
   modalFooter.appendChild(btnDetails);
   modalFooter.appendChild(btnCls);
   modalContent.appendChild(modalHeader);
   modalContent.appendChild(modalBody);
   modalContent.appendChild(modalFooter);
-  modalContent.appendChild(modalChart);
   modalDialog.appendChild(modalContent);
   modal.appendChild(modalDialog)
   content.appendChild(modal);
-  //modal ver
-  const modalLook = document.createElement('div');
-  modalLook.setAttribute('class', 'modal fade');
-  modalLook.setAttribute('id', `mLook${el.id}`)
-  modalLook.setAttribute('tabindex', '-1');
-  modalLook.setAttribute('role', 'dialog');
-  // modalLook.setAttribute('aria-labelledby', `m${el.id}`);
-  modalLook.setAttribute('aria-hidden', 'true');
-  const modalDlg = document.createElement('div');
-  modalDlg.setAttribute('class', 'modal-dialog modal-dialog-centered');
-  modalDlg.setAttribute('role', 'document');
-  const modalCont = document.createElement('div');
-  modalCont.setAttribute('class', 'modal-content');
-  const modalHead = document.createElement('div');
-  modalHead.setAttribute('class', 'modal-header');
-  const phrase = document.createElement('h5');
-  phrase.setAttribute('class', 'modal-title');
-  phrase.setAttribute('id', `m${el.id}`);
-  phrase.textContent = 'Revisión de Estado';
-  const btnCl = document.createElement('button');
-  btnCl.setAttribute('type', 'button');
-  btnCl.setAttribute('class', 'close');
-  btnCl.setAttribute('data-dismiss', 'modal');
-  btnCl.setAttribute('arial-label', 'Close');
-  const spanCl = document.createElement('span');
-  spanCl.setAttribute('aria-hidden', 'true');
-  spanCl.textContent = 'x';
-  const modalBo = document.createElement('div');
-  modalBo.setAttribute('class', 'modal-body');
-  const img = document.createElement('img');
-  img.setAttribute('src','https://raw.githubusercontent.com/JoselynSilva/TalentFestEngie/practica/distribution/image/reporte.jpg');
-  img.setAttribute('alt','info');
-  // img.setAttribute('class','');
-  modalHead.appendChild(phrase);
-  btnCl.appendChild(spanCl);
-  modalHead.appendChild(btnCl);
-  modalBo.appendChild(img);
-  modalCont.appendChild(modalHead);
-  modalCont.appendChild(modalBo);
-  modalDlg.appendChild(modalCont);
-  modalLook.appendChild(modalDlg)
-  content.appendChild(modalLook);
 }
 const selectMonth = (e) => {
   const val = e.target.value;
