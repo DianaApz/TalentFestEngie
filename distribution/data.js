@@ -42,6 +42,7 @@ const showData = (el) => {
   cardContainer.appendChild(nro);
   card.appendChild(cardBody);
   content.appendChild(card);
+  //modal plan
   const modal = document.createElement('div');
   modal.setAttribute('class', 'modal fade');
   modal.setAttribute('id', `${el.id}`)
@@ -76,6 +77,35 @@ const showData = (el) => {
   pDate.textContent = `Fecha límite : ${el.deadline}`;
   const pStatus = document.createElement('p');
   pStatus.textContent = `Estado : ${el.status}`;
+
+
+  // MODAL CHART
+  const modalChart = document.createElement('div');
+  modalChart.setAttribute('class', 'card')
+  // const modalCardChart = document.createElement('div');
+  // modalCardChart.setAttribute('class', 'card-header')
+  // const modalH2 = document.createElement('h2');
+  // modalH2.setAttribute('class', 'h6 text-uppercase mb-0');
+  // modalH2.textContent='chart';
+  // const modalCardBody = document.createElement('div');
+  // modalCardBody.setAttribute('class', 'card-body')
+  // const modalChartHolder = document.createElement('div');
+  // modalChartHolder.setAttribute('class', 'chart-holder')
+  const modalCanva= document.createElement('canvas');
+  modalCanva.setAttribute('class', 'pieChart2');
+  modalCanva.setAttribute('width', '400px');
+
+
+//   <div class="card mb-4">
+//   <div class="card-header">
+//     <h2 class="h6 text-uppercase mb-0">Pie chart Example</h2>
+//   </div>
+//   <div class="card-body">
+//     <div class="chart-holder">
+//       <canvas id="pieChart2"></canvas>
+//     </div>
+//   </div>
+// </div>
   const modalFooter = document.createElement('div');
   modalFooter.setAttribute('class', 'modal-footer');
   const btnDetails = document.createElement('button');
@@ -86,13 +116,33 @@ const showData = (el) => {
   btnCls.setAttribute('type', 'button');
   btnCls.setAttribute('class', 'btn btn-secondary');
   btnCls.setAttribute('data-dismiss', 'modal')
-  btnCls.textContent = 'Declinar';
+  btnCls.textContent = 'Declinar';  
+
+  // modalCardChart.appendChild(modalH2);
+  // modalChartHolder.appendChild(modalCanva);
+  // modalCardBody.appendChild(modalChartHolder);
+
+  // modalChart.appendChild(modalCardChart);
+  // modalChart.appendChild(modalCardBody);
+  
+
   modalHeader.appendChild(title);
   btnClose.appendChild(spanClose);
   modalHeader.appendChild(btnClose);
+  modalChart.appendChild(modalCanva);
+  modalBody.appendChild(modalChart);
   modalBody.appendChild(pRes);
   modalBody.appendChild(pDate);
   modalBody.appendChild(pStatus);
+  
+
+
+  
+
+
+
+
+
   modalFooter.appendChild(btnDetails);
   modalFooter.appendChild(btnCls);
   modalContent.appendChild(modalHeader);
